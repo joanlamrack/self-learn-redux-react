@@ -7,8 +7,19 @@ const mapStateToProps = state => {
 	};
 };
 
-function toggleLogin(){
-	return { type: "DO_LOGIN", payload:{} }
+// componentDidMount(){
+// 	axios.get
+// 	.then(){
+// 		//lalallal
+// 		props.doLogin(id)
+// 	}
+// 	.catch(){
+
+// 	}
+// }
+
+function toggleLogin(id){
+	return { type: "DO_LOGIN", payload:id }
 }
 
 const mapDispatchToProps = dispatch => {
