@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
 const initialstate = [
 	{
@@ -25,10 +26,46 @@ const login = (state = initialLoginStatus, action) => {
 	}
 };
 
+const peopleinitial = {
+	loading: false,
+	error: {},
+	data: null
+};
+
+const people = (state = peopleinitial, action) => {
+	switch (action.type) {
+	case "GET_PEOPLE_REQUEST":
+		return { ...state, loading: true };
+	case "GET_PEOPLE_SUCCESS":
+		return {
+			...state,
+			loading: false,
+			data: action.payload,
+			error: undefined
+		};
+	case "GET_PEOPLE_FAILED":
+		return {
+			...state,
+			loading: false,
+			data: null,
+			error: action.payload
+		};
+	default:
+		return state;
+	}
+};
+
 const rootReducers = combineReducers({
 	todos,
-	login
+	login,
+	people
 });
 
-const store = createStore(rootReducers);
+const store = createStore(
+	rootReducers,
+	compose(
+		applyMiddleware(thunk),
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	)
+);
 export default store;
