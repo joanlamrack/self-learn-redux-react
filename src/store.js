@@ -1,9 +1,11 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
-const initialstate = [{
-	title: "mau makan",
-	duedate : "Besok"
-}];
+const initialstate = [
+	{
+		title: "mau makan",
+		duedate: "Besok"
+	}
+];
 
 const todos = (state = initialstate, action) => {
 	return state;
@@ -11,12 +13,17 @@ const todos = (state = initialstate, action) => {
 
 const initialLoginStatus = {
 	isLogin: false,
-	id:null
-}
+	id: null
+};
 
-const login = (state = initialLoginStatus, action)=>{
+const login = (state = initialLoginStatus, action) => {
 	return state;
-}
+};
 
-const store = createStore(todos);
+const rootReducers = combineReducers({
+	todos,
+	login
+});
+
+const store = createStore(rootReducers);
 export default store;

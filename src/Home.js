@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 
 const mapStateToProps = state => {
 	return {
-		title: state.title
+		todos: state.todos
 	};
 };
 
 const Home = props => {
-	return <h1> Halo {props.title}</h1>;
+	return <h1> Halo {props.todos[0].title}</h1>;
 };
 
 export default connect(mapStateToProps,null)(Home);
