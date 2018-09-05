@@ -1,16 +1,13 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import "./index.css";
-// import App from "./App";
-// import registerServiceWorker from "./registerServiceWorker";
+import { createStore } from "redux";
 
-// ReactDOM.render(<App />, document.getElementById("root"));
-// registerServiceWorker();
+const initialstate = {
+	title: "title",
+	counter: 10
+};
 
-import store from "./js/store";
+const todos = (state = initialstate, action) => {
+	return state;
+};
 
-//What you can do:
-
-// store.getState();
-// store.subscribe(() => console.log("Look ma, redux!"));
-// store.dispatch(addArticle({ name: "React Redux Tutorial", id: 1 }));
+const store = createStore(todos);
+export default store;
