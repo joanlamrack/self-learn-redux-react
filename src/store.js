@@ -17,7 +17,12 @@ const initialLoginStatus = {
 };
 
 const login = (state = initialLoginStatus, action) => {
-	return state;
+	switch (action.type) {
+	case "DO_LOGIN":
+		return { ...state, isLogin: !state.isLogin }; //overridiing case
+	default:
+		return state;
+	}
 };
 
 const rootReducers = combineReducers({

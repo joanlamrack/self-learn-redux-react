@@ -1,14 +1,34 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 const mapStateToProps = state => {
 	return {
-		todos: state.todos
+		login: state.login
+	};
+};
+
+function toggleLogin(){
+	return { type: "DO_LOGIN", payload:{} }
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		doLogin: () => {
+			dispatch(toggleLogin());
+		}
 	};
 };
 
 const Home = props => {
-	return <h1> Halo {props.todos[0].title}</h1>;
+	return (
+		<div>
+			<h1> Halo Eri Kamu {props.login.isLogin ? "Login" : "Tidak Login"}</h1>
+			<button onClick={props.doLogin}>LOGIN</button>
+		</div>
+	);
 };
 
-export default connect(mapStateToProps,null)(Home);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Home);
