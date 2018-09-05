@@ -7,4 +7,10 @@
 // ReactDOM.render(<App />, document.getElementById("root"));
 // registerServiceWorker();
 
-import index from "./js/index";
+import store from "./js/store";
+
+//What you can do:
+
+// store.getState();
+// store.subscribe(() => console.log("Look ma, redux!"));
+// store.dispatch(addArticle({ name: "React Redux Tutorial", id: 1 }));
