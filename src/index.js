@@ -1,13 +1,8 @@
-import { createStore } from "redux";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
 
-const initialstate = {
-	title: "title",
-	counter: 10
-};
-
-const todos = (state = initialstate, action) => {
-	return state;
-};
-
-const store = createStore(todos);
-export default store;
+ReactDOM.render(<App />, document.getElementById("root"));
+registerServiceWorker();
